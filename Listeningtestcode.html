@@ -1,0 +1,133 @@
+<html>
+<head>
+  <title>Listening Test</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .question-container {
+      margin-bottom: 20px;
+    }
+
+    .question {
+      margin-bottom: 10px;
+    }
+
+    .option {
+      margin-bottom: 5px;
+    }
+
+    #submit-btn {
+      display: block;
+      margin: 0 auto;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Listening Test</h1>
+
+  <div class="question-container">
+    <div class="question">
+      <p>1. Listen to the recording and fill in the blanks with the missing words/expressions.</p>
+      <p>Mechanics and Car Repairs</p>
+      <p>My car was (a.) _________________________ recently and wasn’t running right, so I took it to a mechanic to have it checked. Every time I tried to start the car, the engine would (b.) _________________________ for a second or two and then die. The mechanic pulled the car into his garage to look things over. The mechanic (c.) _________________________ the hood, checked to see if all the hoses and belts were in working order, and then tested the car battery and battery (d.) _________________________. After taking a look at things for a few minutes and trying to get the car going, the mechanic (e.) _________________________ the problem as a bad alternator. He said he could fix the problem by (f.) _________________________ the alternator with a new one ($130) or a rebuilt alternator ($80). Just diagnosing the problem cost $65, and the labor was $50. I asked the mechanic to go ahead and do the repairs, and he said there was a 30-day (g.) _________________________ on parts and labor. Some mechanics might (h.) _________________________ you for repairs, but the mechanic I go to is fair and does great work.</p>
+      <p>8 x 5 = 40 pontos (<span id="question1-score">______</span>)</p>
+    </div>
+    <audio controls>
+      <source src="link_to_audio_recording1.mp3" type="audio/mpeg">
+    </audio>
+    <textarea id="question1-answer" rows="4" cols="50"></textarea>
+  </div>
+
+  <div class="question-container">
+    <div class="question">
+      <p>2. Listen to the recording and answer the questions.</p>
+      <p>2.1. Where did the car accident take place?</p>
+      <input type="radio" name="question2" value="a"> a. In the parking lot at the store.<br>
+      <input type="radio" name="question2" value="b"> b. At the post office.<br>
+      <input type="radio" name="question2" value="c"> c. In front of the house.<br><br>
+
+      <p>2.2. The main factor that caused the accident was…</p>
+      <input type="radio" name="question3" value="a"> a. A faulty car mechanism.<br>
+      <input type="radio" name="question3" value="b"> b. Excessive speed.<br>
+      <input type="radio" name="question3" value="c"> c. Some obstruction in the car.<br><br>
+
+      <p>2.3. Why is the girl really upset?</p>
+      <input type="radio" name="question4" value="a"> a. She doesn't have money to repair the car.<br>
+      <input type="radio" name="question4" value="b"> b. He won't have a car to drive over the weekend.<br>
+      <input type="radio" name="question4" value="c"> c. She wrecked her friend's car.<br><br>
+
+      <p>2.4. What is her dad's original solution to her predicament?</p>
+      <input type="radio" name="question5" value="a"> a. He suggests she invite friends over to eat.<br>
+      <input type="radio" name="question5" value="b"> b. He offers to help pay for the repairs.<br>
+      <input type="radio" name="question5" value="c"> c. Her dad volunteers to drive her where she needs to go.<br><br>
+
+      <p>2.5. How is the situation finally resolved?</p>
+      <input type="radio" name="question6" value="a"> a. The girl decides to go camping instead.<br>
+      <input type="radio" name="question6" value="b"> b. The girl invites friends over for a pizza party.<br>
+      <input type="radio" name="question6" value="c"> c. The father reluctantly loans his car.<br><br>
+
+      <p>5 x 5 = 25 pontos (<span id="question2-score">______</span>)</p>
+    </div>
+    <audio controls>
+      <source src="link_to_audio_recording2.mp3" type="audio/mpeg">
+    </audio>
+  </div>
+
+  <!-- Add the remaining questions in a similar format -->
+
+  <button id="submit-btn" onclick="calculateScore()">Submit</button>
+
+  <script>
+    function calculateScore() {
+      // Get user answers
+      var question1Answer = document.getElementById('question1-answer').value.trim().toLowerCase();
+      var question2Answer = document.querySelector('input[name="question2"]:checked');
+      var question3Answer = document.querySelector('input[name="question3"]:checked');
+      var question4Answer = document.querySelector('input[name="question4"]:checked');
+      var question5Answer = document.querySelector('input[name="question5"]:checked');
+      var question6Answer = document.querySelector('input[name="question6"]:checked');
+
+      // Calculate scores
+      var question1Score = 0;
+      if (question1Answer === "recently" || question1Answer === "just" || question1Answer === "lately") {
+        question1Score = 8;
+      }
+
+      var question2Score = 0;
+      if (question2Answer && question2Answer.value === "a") {
+        question2Score += 5;
+      }
+      if (question3Answer && question3Answer.value === "b") {
+        question2Score += 5;
+      }
+      if (question4Answer && question4Answer.value === "b") {
+        question2Score += 5;
+      }
+      if (question5Answer && question5Answer.value === "c") {
+        question2Score += 5;
+      }
+      if (question6Answer && question6Answer.value === "c") {
+        question2Score += 5;
+      }
+
+      // Update scores on the page
+      document.getElementById('question1-score').textContent = question1Score;
+      document.getElementById('question2-score').textContent = question2Score;
+
+      // You can add similar code to calculate scores for other questions and update the respective elements
+
+      // Display total score
+      var totalScore = question1Score + question2Score;
+      alert("Total Score: " + totalScore);
+    }
+  </script>
+</body>
+</html>
